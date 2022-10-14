@@ -1,0 +1,13 @@
+.profile__descr {
+  margin: 0;
+  font-size: 18px;
+  line-height: 21.78px;
+  grid-area: user-about;
+}
+
+@media screen and (max-width: 410px) {
+  .profile__descr {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
