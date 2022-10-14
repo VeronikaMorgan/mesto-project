@@ -9,9 +9,20 @@
 </head>
 <body class="page">
   <header class="header page__container page__container_type_narrow">
-    <a href="" class="header__logo" target="_blank"></a>
+    <a href="" class="header__logo header__logo_theme_dark" target="_blank"></a>
   </header>
   <main class="main page__container">
+    <div id="#profile-edit" class="popup">
+      <div class="popup__container">
+        <button class="popup__close-btn"></button>
+        <form class="popup__wrapper" action="">
+          <h1 class="popup__title">Редактировать профиль</h1>
+          <input class="popup__input" type="text" value="" placeholder="Имя" required>
+          <input class="popup__input" type="text" value="" placeholder="О себе">
+          <input class="popup__submit-btn" type="submit" value="Сохранить"> 
+        </form>
+      </div>
+    </div>
     <section class="profile">
       <img src="images/avatar.jpg" alt="аватарка" class="profile__avatar">
       <div class="profile__info">

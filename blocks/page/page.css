@@ -5,4 +5,5 @@
   color: #fff;
   font-family: "Inter", serif;
   font-weight: 400;
+  overflow-x: hidden;
 }
