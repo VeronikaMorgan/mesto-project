@@ -5,7 +5,7 @@
   grid-area: user-about;
 }
 
-@media screen and (max-width: 410px) {
+@media screen and (max-width: 710px) {
   .profile__descr {
     font-size: 14px;
     line-height: 17px;

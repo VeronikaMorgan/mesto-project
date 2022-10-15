@@ -5,11 +5,16 @@
   font-size: 42px;
   line-height: 48px;
   grid-area: user-name;
+  max-width: 294px; 
+  /* вдруг у человека длинное имя */
+  overflow-wrap: break-word;
 }
 
-@media screen and (max-width: 410px) {
+
+@media screen and (max-width: 790px) {
   .profile__name {
     font-size: 27px;
     line-height: 32px;
+    max-width: 189px;
   }
 }

@@ -3,6 +3,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
+  flex-shrink: 0;
   width: 22px;
   height: 19px;
   cursor: pointer;

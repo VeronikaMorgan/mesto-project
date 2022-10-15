@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="pages/index.css">
   <title>Mesto</title>
+  <link type="image/x-icon" rel="shortcut icon" href="images/favicon.ico">
 </head>
 <body class="page">
   <header class="header page__container page__container_type_narrow">
@@ -16,9 +17,9 @@
       <div class="popup__container">
         <button class="popup__close-btn"></button>
         <form class="popup__wrapper" action="">
-          <h1 class="popup__title">Редактировать профиль</h1>
+          <h3 class="popup__title">Редактировать профиль</h3>
           <input class="popup__input" type="text" value="" placeholder="Имя" required>
-          <input class="popup__input" type="text" value="" placeholder="О себе">
+          <input class="popup__input" type="text" value="" placeholder="О себе" maxlength="100">
           <input class="popup__submit-btn" type="submit" value="Сохранить"> 
         </form>
       </div>
@@ -35,7 +36,7 @@
     <section class="cards">
       <ul class="cards__wrapper">
         <li class="card">
-          <img src="images/cards/card-1.png" alt="" class="card__cover">
+          <img src="images/cards/card-1.png" alt="фотография пользователя" class="card__cover">
           <div class="card__descr">
             <h2 class="card__title">Карачаевск</h2>
             <div class="card__like card__like_active"></div>
@@ -43,45 +44,45 @@
         </li>
 
         <li class="card">
-          <img src="images/cards/card-1.png" alt="" class="card__cover">
+          <img src="images/cards/card-2.png" alt="фотография пользователя" class="card__cover">
           <div class="card__descr">
-            <h2 class="card__title">Карачаевск</h2>
+            <h2 class="card__title">Гора Эльбрус</h2>
             <div class="card__like"></div>
           </div>
         </li>
 
         <li class="card">
-          <img src="images/cards/card-1.png" alt="" class="card__cover">
+          <img src="images/cards/card-3.png" alt="фотография пользователя" class="card__cover">
           <div class="card__descr">
-            <h2 class="card__title">Карачаевск</h2>
+            <h2 class="card__title">Домбай</h2>
             <div class="card__like"></div>
           </div>
         </li>
 
         <li class="card">
-          <img src="images/cards/card-1.png" alt="" class="card__cover">
+          <img src="images/cards/card-2.png" alt="фотография пользователя" class="card__cover">
           <div class="card__descr">
-            <h2 class="card__title">Карачаевск</h2>
+            <h2 class="card__title">Гора Эльбрус</h2>
             <div class="card__like"></div>
           </div>
         </li>
 
         <li class="card">
-          <img src="images/cards/card-1.png" alt="" class="card__cover">
+          <img src="images/cards/card-3.png" alt="фотография пользователя" class="card__cover">
           <div class="card__descr">
-            <h2 class="card__title">Карачаевск</h2>
+            <h2 class="card__title">Домбай</h2>
             <div class="card__like"></div>
           </div>
         </li>
 
         <li class="card">
-          <img src="images/cards/card-1.png" alt="" class="card__cover">
+          <img src="images/cards/card-1.png" alt="фотография пользователя" class="card__cover">
           <div class="card__descr">
-            <h2 class="card__title">Карачаевск</h2>
+            <h2 class="card__title">Карачаевo-Черкесово</h2>
             <div class="card__like"></div>
           </div>
         </li>
-    </ul>
+      </ul>
     </section>
   </main>
   <footer class="footer page__container">
