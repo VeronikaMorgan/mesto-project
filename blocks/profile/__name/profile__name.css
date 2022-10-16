@@ -6,8 +6,9 @@
   line-height: 48px;
   grid-area: user-name;
   max-width: 294px; 
-  /* вдруг у человека длинное имя */
-  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 
