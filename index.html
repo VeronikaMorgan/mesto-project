@@ -14,80 +14,54 @@
   </header>
   <main class="main page__container">
     <section class="profile">
-      <img src="images/avatar.jpg" alt="аватарка" class="profile__avatar">
+      <img src="images/photo_2022-10-22_01-54-11.jpg" alt="аватарка" class="profile__avatar">
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <button class="button button_type_edit profile__button" type="button"></button>
+        <button class="button button_type_edit profile__button profile__button_type_edit" type="button"></button>
         <p class="profile__descr">Исследователь океана</p>
       </div>
-      <button class="button button_type_add" type="button"></button>
+      <button class="button button_type_add profile__button_type_add" type="button"></button>
     </section>
     <section class="cards">
       <ul class="cards__wrapper">
-        <li class="card">
-          <img src="images/cards/card-1.png" alt="фотография пользователя" class="card__cover">
-          <div class="card__descr">
-            <!-- Какой заголовок использовать в данном случае я не совсем понимаю, и как это связано со шрифтом -->
-            <h2 class="card__title">Карачаевск</h2>
-            <button class="card__like" type="button"></button>
-          </div>
-        </li>
-
-        <li class="card">
-          <img src="images/cards/card-2.png" alt="фотография пользователя" class="card__cover">
-          <div class="card__descr">
-            <h2 class="card__title">Гора Эльбрус</h2>
-            <button class="card__like" type="button"></button>
-          </div>
-        </li>
-
-        <li class="card">
-          <img src="images/cards/card-3.png" alt="фотография пользователя" class="card__cover">
-          <div class="card__descr">
-            <h2 class="card__title">Домбай</h2>
-            <button class="card__like" type="button"></button>
-          </div>
-        </li>
-
-        <li class="card">
-          <img src="images/cards/card-2.png" alt="фотография пользователя" class="card__cover">
-          <div class="card__descr">
-            <h2 class="card__title">Гора Эльбрус</h2>
-            <button class="card__like" type="button"></button>
-          </div>
-        </li>
-
-        <li class="card">
-          <img src="images/cards/card-3.png" alt="фотография пользователя" class="card__cover">
-          <div class="card__descr">
-            <h2 class="card__title">Домбай</h2>
-            <button class="card__like" type="button"></button>
-          </div>
-        </li>
-
-        <li class="card">
-          <img src="images/cards/card-1.png" alt="фотография пользователя" class="card__cover">
-          <div class="card__descr">
-            <h2 class="card__title">Карачаевo-Черкесово</h2>
-            <button class="card__like" type="button"></button>
-          </div>
-        </li>
+        <template id="card-template">
+          <li class="card">
+            <button class="card__delete-btn" type="button"></button>
+            <img src="images/cards/card-1.png" alt="фотография пользователя" class="card__cover">
+            <div class="card__descr">
+              <h2 class="card__title">Карачаевск</h2>
+              <button class="card__like" type="button"></button>
+            </div>
+          </li>
+        </template>
       </ul>
     </section>
   </main>
   <footer class="footer page__container">
     <p class="footer__copyright">	&copy; 2020 Mesto Russia</p>
   </footer>
-  <div id="#profile-edit" class="popup">
+  <div id="profile-edit" class="popup profile-popup">
     <div class="popup__container">
       <button class="popup__close-btn"></button>
-      <form class="popup__wrapper" action="#" name="profile-form">
+      <form class="popup__wrapper profile-popup__form" action="#" name="profile-form">
         <h3 class="popup__title">Редактировать профиль</h3>
-        <input class="popup__input" type="text" value="" placeholder="Имя" required>
-        <input class="popup__input" type="text" value="" placeholder="О себе" maxlength="100">
+        <input class="popup__input profile-popup__input-text profile-popup__input-text_type_name" type="text" value="" placeholder="Имя" required>
+        <input class="popup__input profile-popup__input-text profile-popup__input-text_type_job" type="text" value="" placeholder="О себе" maxlength="100">
         <button class="popup__submit-btn" type="submit" value="Сохранить">Сохранить</button>
       </form>
     </div>
   </div>
+  <div id="card-add" class="popup galary-popup">
+    <div class="popup__container">
+      <button class="popup__close-btn"></button>
+      <form class="popup__wrapper galary-popup__form" action="#" name="card-form">
+        <h3 class="popup__title">Новое место</h3>
+        <input class="popup__input galary-popup__input-text galary-popup__input-text_type_name" type="text" value="" placeholder="Название" required>
+        <input class="popup__input galary-popup__input-text galary-popup__input-text_type_link" type="text" value="" placeholder="Ссылка на картинку" maxlength="100">
+        <button class="popup__submit-btn" type="submit" value="Сохранить">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <script src="scripts/script.js"></script>
 </body>
 </html>
