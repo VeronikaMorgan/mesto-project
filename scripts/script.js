@@ -59,63 +59,27 @@ const initialCards = [
   }
 ]; 
 
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
-}
+// отрисовка дефолтных карточек
+initialCards.forEach(item => {
+  createCard(item.name, item.link);
+})
 
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-}
-
-function editFormDefault() {
-  nameInput.value = userName.textContent;
-  jobInput.value = userJob.textContent;
-}
-
+// обработчик событий для открытия модалки на клик
 editFormBtn.addEventListener('click', () => openPopup(editPopup), editFormDefault());
 addCardBtn.addEventListener('click', () => openPopup(addCardPopup));
 
+//обработчик событий для закрытия близжайшей модалки на клик
 popupCloseBtns.forEach(function(btn) {
   btn.addEventListener('click', () => closePopup(btn.closest('.popup')));
 })
 
-function editProfile (evt) {
-  evt.preventDefault();
-  userName.textContent = nameInput.value;
-  userJob.textContent = jobInput.value;
-  closePopup(editPopup);
-}
-
+//обработчик для внесения инфорции в профиль при отправлении формы
 editForm.addEventListener('submit', editProfile);
 
-function like(card) {
-  card.querySelector('.card__like').addEventListener('click', function(evt) {
-    evt.target.classList.toggle('card__like_active');
-  })
-}
-
-function addNewCard(evt) {
-  evt.preventDefault();
-  createCard(cardNameInput.value, cardLinkInput.value);
-  closePopup(addCardPopup);
-}
+//обработчик для добавления новой карточки при отправлении формы
 addCardForm.addEventListener('submit', addNewCard);
 
-function deleteCard(card) {
-  card.querySelector('.card__delete-btn').addEventListener('click', function() {
-    card.closest('.card').remove();
-  })
-}
-
-// не нравится эта функция
-function createCardPopup(card) {
-  card.querySelector('.card__cover').addEventListener('click', () => {
-  imageCaption.textContent = card.querySelector('.card__title').textContent;
-  imageLink.src = card.querySelector('.card__cover').src;
-  openPopup(imagePopup);
-})
-}
-
+// создание шаблона для карточки
 function createCard(name, link) {
   card = cardElement.cloneNode(true);
   card.querySelector('.card__title').textContent = name;
@@ -127,7 +91,52 @@ function createCard(name, link) {
   return card
 }
 
-initialCards.forEach(function(item) {
-  createCard(item.name, item.link);
-})
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+}
 
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
+
+// синхронизация информации в профиле и полях ввода формы
+function editFormDefault() {
+  nameInput.value = userName.textContent;
+  jobInput.value = userJob.textContent;
+}
+
+function editProfile (evt) {
+  evt.preventDefault();
+  userName.textContent = nameInput.value;
+  userJob.textContent = jobInput.value;
+  closePopup(editPopup);
+}
+
+
+function like(card) {
+  card.querySelector('.card__like').addEventListener('click', (evt) => {
+    evt.target.classList.toggle('card__like_active');
+  })
+}
+
+function addNewCard(evt) {
+  evt.preventDefault();
+  createCard(cardNameInput.value, cardLinkInput.value);
+  closePopup(addCardPopup);
+}
+
+function deleteCard(card) {
+  card.querySelector('.card__delete-btn').addEventListener('click', () => {
+    card.closest('.card').remove();
+  })
+}
+
+// создание модалки с икартинкой для карточки
+// не нравится эта функция
+function createCardPopup(card) {
+  card.querySelector('.card__cover').addEventListener('click', () => {
+  imageCaption.textContent = card.querySelector('.card__title').textContent;
+  imageLink.src = card.querySelector('.card__cover').src;
+  openPopup(imagePopup);
+})
+}
