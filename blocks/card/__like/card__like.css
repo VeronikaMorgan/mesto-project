@@ -1,7 +1,7 @@
 .card__like {
   border: none;
   background-color: transparent;
-  background-image: url('../../../images/cards/like-icon.svg');
+  background-image: url('../../../images/card-like.svg');
   background-size: cover;
   background-repeat: no-repeat;
   display: block;

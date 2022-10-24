@@ -1,0 +1,6 @@
+.img-popup__img {
+  object-fit: contain;
+  max-width: 75vw;
+  max-height: 75vh;
+  vertical-align: top;
+}

@@ -14,20 +14,20 @@
   </header>
   <main class="main page__container">
     <section class="profile">
-      <img src="images/photo_2022-10-22_01-54-11.jpg" alt="аватарка" class="profile__avatar">
+      <img src="images/avatar.jpg" alt="аватарка" class="profile__avatar">
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <button class="button button_type_edit profile__button profile__button_type_edit" type="button"></button>
         <p class="profile__descr">Исследователь океана</p>
       </div>
-      <button class="button button_type_add profile__button_type_add" type="button"></button>
+      <button class="button button_type_add profile__button profile__button_type_add" type="button"></button>
     </section>
     <section class="cards">
       <ul class="cards__wrapper">
         <template id="card-template">
           <li class="card">
             <button class="card__delete-btn" type="button"></button>
-            <img src="images/cards/card-1.png" alt="фотография пользователя" class="card__cover">
+            <img src="#" alt="фотография пользователя" class="card__cover">
             <div class="card__descr">
               <h2 class="card__title">Карачаевск</h2>
               <button class="card__like" type="button"></button>
@@ -38,28 +38,37 @@
     </section>
   </main>
   <footer class="footer page__container">
-    <p class="footer__copyright">	&copy; 2020 Mesto Russia</p>
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
-  <div id="profile-edit" class="popup profile-popup">
-    <div class="popup__container">
+  <div id="editProfile" class="popup popup_type_modal profile-popup">
+    <div class="popup__container popup__container_type_modal">
       <button class="popup__close-btn"></button>
       <form class="popup__wrapper profile-popup__form" action="#" name="profile-form">
         <h3 class="popup__title">Редактировать профиль</h3>
-        <input class="popup__input profile-popup__input-text profile-popup__input-text_type_name" type="text" value="" placeholder="Имя" required>
-        <input class="popup__input profile-popup__input-text profile-popup__input-text_type_job" type="text" value="" placeholder="О себе" maxlength="100">
+        <input id="profile-form-name" class="popup__input" type="text" value="" placeholder="Имя" required>
+        <input id="profile-form-job"class="popup__input" type="text" value="" placeholder="О себе" maxlength="100">
         <button class="popup__submit-btn" type="submit" value="Сохранить">Сохранить</button>
       </form>
     </div>
   </div>
-  <div id="card-add" class="popup galary-popup">
-    <div class="popup__container">
+  <div id="addCard" class="popup popup_type_modal new-card-popup">
+    <div class="popup__container popup__container_type_modal">
       <button class="popup__close-btn"></button>
-      <form class="popup__wrapper galary-popup__form" action="#" name="card-form">
+      <form class="popup__wrapper new-card-popup__form" action="#" name="card-form">
         <h3 class="popup__title">Новое место</h3>
-        <input class="popup__input galary-popup__input-text galary-popup__input-text_type_name" type="text" value="" placeholder="Название" required>
-        <input class="popup__input galary-popup__input-text galary-popup__input-text_type_link" type="text" value="" placeholder="Ссылка на картинку" maxlength="100">
+        <input id="newCardName" class="popup__input" type="text" value="" placeholder="Название" required>
+        <input id="newCardLink" class="popup__input" type="text" value="" placeholder="Ссылка на картинку" required>
         <button class="popup__submit-btn" type="submit" value="Сохранить">Сохранить</button>
       </form>
+    </div>
+  </div>
+  <div id="openImg" class="popup popup_type_img img-popup">
+    <div class="popup__container popup__container_type_img">
+      <button class="popup__close-btn"></button>
+      <figure class="img-popup__img-wrapper">
+        <img src="#" alt="Развернутая фотография" class="img-popup__img">
+        <figcaption class="img-popup__figcaption"></figcaption>
+      </figure>
     </div>
   </div>
   <script src="scripts/script.js"></script>
