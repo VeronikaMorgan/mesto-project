@@ -73,18 +73,18 @@ popupCloseBtns.forEach(function(btn) {
   btn.addEventListener('click', () => closePopup(btn.closest('.popup')));
 })
 
-//обработчик для внесения инфорции в профиль при отправлении формы
+//обработчик для внесения информации в профиль при отправлении формы
 editForm.addEventListener('submit', editProfile);
 
 //обработчик для добавления новой карточки при отправлении формы
 addCardForm.addEventListener('submit', addNewCard);
 
-// создание шаблона для карточки
+// создание новой карточки
 function createCard(name, link) {
   card = cardElement.cloneNode(true);
   card.querySelector('.card__title').textContent = name;
-  card.querySelector('.card__cover').src = link;
-  createCardPopup(card)
+  card.querySelector('.card__cover').src = link; 
+  openCardPopup(card)
   deleteCard(card);
   like(card);
   cardList.prepend(card);
@@ -105,7 +105,7 @@ function editFormDefault() {
   jobInput.value = userJob.textContent;
 }
 
-function editProfile (evt) {
+function editProfile(evt) {
   evt.preventDefault();
   userName.textContent = nameInput.value;
   userJob.textContent = jobInput.value;
@@ -131,9 +131,8 @@ function deleteCard(card) {
   })
 }
 
-// создание модалки с икартинкой для карточки
-// не нравится эта функция
-function createCardPopup(card) {
+// создание модалки с картинкой для карточки
+function openCardPopup(card) {
   card.querySelector('.card__cover').addEventListener('click', () => {
   imageCaption.textContent = card.querySelector('.card__title').textContent;
   imageLink.src = card.querySelector('.card__cover').src;
