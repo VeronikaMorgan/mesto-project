@@ -1,0 +1,8 @@
+.modal__label {
+  position: relative;
+  margin-top: 40px;
+}
+
+.modal__label:first-of-type {
+  margin-top: 0;
+}

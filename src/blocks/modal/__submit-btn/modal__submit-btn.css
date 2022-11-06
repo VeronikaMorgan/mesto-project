@@ -1,0 +1,25 @@
+.modal__submit-btn {
+  min-width: 100%;
+  padding: 14px;
+  margin-top: 48px;
+  font-size: 18px;
+  line-height: 22px;
+  border-radius: 2px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color .3s linear;
+}
+
+.modal__submit-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media screen and (max-width: 600px) {
+  .modal__submit-btn {
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 45px;
+  }
+}

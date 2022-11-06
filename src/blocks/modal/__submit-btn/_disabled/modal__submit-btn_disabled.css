@@ -1,0 +1,10 @@
+.modal__submit-btn_disabled {
+  background-color: transparent;
+  border: 1px rgba(0, 0, 0, 0.2) solid;
+  color: rgba(0, 0, 0, 0.2);
+  cursor: default;
+}
+
+.modal__submit-btn_disabled:hover {
+  background-color: transparent;
+}

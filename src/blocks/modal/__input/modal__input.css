@@ -1,0 +1,14 @@
+.modal__input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
+  padding: 0 0 13px 0;
+  font-size: 14px;
+  line-height: 17px;
+  transition: border-color .3s linear;
+}
+
+.modal__input:focus {
+  outline: none;
+  border-color: rgba(0, 0, 0, 0.8);
+}

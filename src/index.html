@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+  <link type="image/x-icon" rel="shortcut icon" href="./images/favicon.ico">
+</head>
+<body class="page">
+  <header class="header page__container page__container_type_narrow">
+    <a href="" class="header__logo header__logo_theme_dark" target="_blank"></a>
+  </header>
+  <main class="main page__container">
+    <section class="profile">
+      <img src="<%=require('./images/avatar.jpg')%>" alt="аватарка" class="profile__avatar">
+      <div class="profile__info">
+        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <button class="button button_type_edit profile__button profile__button_type_edit" type="button"></button>
+        <p class="profile__descr">Исследователь океана</p>
+      </div>
+      <button class="button button_type_add profile__button profile__button_type_add" type="button"></button>
+    </section>
+    <section class="cards">
+      <ul class="cards__wrapper">
+        <template id="card-template">
+          <li class="card">
+            <button class="card__delete-btn" type="button"></button>
+            <img src="#" alt="фотография пользователя" class="card__cover">
+            <div class="card__descr">
+              <h2 class="card__title">Карачаевск</h2>
+              <button class="card__like" type="button"></button>
+            </div>
+          </li>
+        </template>
+      </ul>
+    </section>
+  </main>
+  <footer class="footer page__container">
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+  </footer>
+  <div id="editProfileModal" class="modal">
+    <div class="modal__container modal__container_type_form">
+      <button class="modal__close-btn"></button>
+      <form class="modal__form" action="#" name="profileForm" novalidate>
+        <h3 class="modal__title">Редактировать профиль</h3>
+        <label class="modal__label" for="profileInputName">
+          <input id="profileInputName" class="modal__input" type="text" value="" placeholder="Имя" minlength="2" maxlength="40" required autocomplete="off">
+          <p id="profileInputName-error" class="modal__input-error"></p>
+        </label>
+        <label class="modal__label" for="profileInputJob">
+          <input id="profileInputJob" class="modal__input" type="text" value="" placeholder="О себе" minlength="2" maxlength="200" required autocomplete="off">
+          <p id="profileInputJob-error" class="modal__input-error"></p>
+        </label>
+        <button class="modal__submit-btn" type="submit" value="Сохранить">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <div id="addCardModal" class="modal">
+    <div class="modal__container modal__container_type_form">
+      <button class="modal__close-btn"></button>
+      <form class="modal__form" action="#" name="cardForm" novalidate>
+        <h3 class="modal__title">Новое место</h3>
+        <label class="modal__label" for="cardInputName">
+          <input id="cardInputName" class="modal__input" type="text" value="" placeholder="Название" minlength="2" maxlength="30" required autocomplete="off">
+          <p id="cardInputName-error" class="modal__input-error"></p>
+        </label>
+        <label class="modal__label" for="cardInputLink">
+          <input id="cardInputLink" class="modal__input" type="url" value="" placeholder="Ссылка на картинку" autocomplete="off" required>
+          <p id="cardInputLink-error" class="modal__input-error"></p>
+        </label>
+        <button class="modal__submit-btn" type="submit" value="Сохранить">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <div id="imgModal" class="modal modal_type_img img-modal">
+    <div class="modal__container">
+      <button class="modal__close-btn"></button>
+      <figure class="img-modal__wrapper">
+        <img src="#" alt="Развернутая фотография" class="img-modal__img">
+        <figcaption class="img-modal__figcaption"></figcaption>
+      </figure>
+    </div>
+  </div>
+</body>
+</html>

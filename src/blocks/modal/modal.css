@@ -1,0 +1,14 @@
+.modal {
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  left: 0;
+  top: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: height 0ms 400ms, opacity 400ms 0ms;
+}
