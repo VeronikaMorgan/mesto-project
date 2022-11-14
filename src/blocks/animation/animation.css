@@ -1,0 +1,14 @@
+@keyframes fading {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes like {
+  50% {
+    transform: scale(1.5);
+  }
+}

@@ -1,12 +1,13 @@
 import './pages/index.css';
-import { validationData, initialCards } from "./components/data";
+import { validationData} from "./components/data";
 import { openModal, closeModal} from "./components/utils";
 import { addNewCard, prependCard } from "./components/card";
 import { enableValidation, resetErrors } from './components/validate';
-
+import { getInitialCards, updateProfileData, getProfileData, updateProfileAvatar, handleError} from './components/api';
 // profile info
 const userName = document.querySelector('.profile__name');
 const userJob  = document.querySelector('.profile__descr');
+const avatarImg = document.querySelector('.profile__avatar');
 
 // edit-profile modal
 const editProfileModal  = document.querySelector('#editProfileModal');
@@ -14,6 +15,13 @@ const profileForm = document.forms['profileForm'];
 const editProfileBtn   = document.querySelector('.profile__button_type_edit');
 const nameInput     = document.querySelector('#profileInputName');
 const jobInput      = document.querySelector('#profileInputJob');
+
+// avatar-modal
+
+const avatarModal = document.querySelector('#editAvatarModal');
+const avatarEditForm = document.forms['avatarForm'];
+const avatarInputLink = document.querySelector('#avatarInputLink');
+const avatarEditBtn = document.querySelector('.profile__avatar-button');
 
 // add-card modal
 const addCardBtn    = document.querySelector('.profile__button_type_add');
@@ -34,6 +42,7 @@ export const imageCaption = document.querySelector('.img-modal__figcaption');
 
 export const modalCloseBtns = document.querySelectorAll('.modal__close-btn');
 
+export  let userId;
 
 modalCloseBtns.forEach( btn => {
   btn.addEventListener('click', () => {
@@ -43,38 +52,98 @@ modalCloseBtns.forEach( btn => {
 })
 
 editProfileBtn.addEventListener('click', () => {
-  const form = editProfileModal.querySelector('.modal__form')
-  resetErrors(form, validationData);
+  resetErrors(profileForm, validationData);
   openModal(editProfileModal);
   editFormDefault();
 });
 
-// rendering of default cards
-initialCards.forEach(item => {
-  prependCard(item.name, item.link);
+avatarEditBtn.addEventListener('click', () => {
+  resetErrors(avatarEditForm, validationData);
+  openModal(avatarModal);
 })
 
 addCardBtn.addEventListener('click', () => {
-  const form = addCardModal.querySelector('.modal__form')
-  resetErrors(form, validationData);
+  resetErrors(cardForm, validationData);
   openModal(addCardModal)
 });
 
 profileForm.addEventListener('submit', editProfile);
 cardForm.addEventListener('submit', addNewCard);
+avatarEditForm.addEventListener('submit', editAvatar)
 
 function editProfile(evt) {
   evt.preventDefault();
-  userName.textContent = nameInput.value;
-  userJob.textContent = jobInput.value;
-  closeModal(editProfileModal);
-  evt.target.reset();
+  const btn = evt.target.querySelector('.modal__submit-btn');
+  renderLoading(true, btn)
+    updateProfileData(nameInput.value, jobInput.value)
+    .then(newData => {
+      userName.textContent = newData.name;
+      userJob.textContent = newData.about;
+    })
+    .catch(handleError)
+    .finally(() => {
+      renderLoading(false, btn);
+      evt.target.reset();
+  })
+  closeModal(editProfileModal)
 };
 
 // info synch for profile data
 function editFormDefault() {
   nameInput.value = userName.textContent;
   jobInput.value = userJob.textContent;
+}
+
+function editAvatar(evt) {
+  evt.preventDefault();
+  const btn = evt.target.querySelector('.modal__submit-btn');
+  renderLoading(true, btn)
+  updateProfileAvatar(avatarInputLink.value)
+  .then(newData => {
+    console.log(newData)
+    avatarImg.src = newData.avatar;
+  })
+  .catch(handleError)
+  .finally(() => {
+    renderLoading(false, btn)
+    evt.target.reset();
+  })
+  closeModal(avatarModal);
+}
+
+export function insertProfileData(obj) {
+  userName.textContent = obj.name;
+  userJob.textContent = obj.about;
+  avatarImg.src = obj.avatar;
+}
+
+export function showDeleteBtn (myCard) {
+  const deleteBtn = myCard.querySelector('.card__delete-btn');
+  deleteBtn.removeAttribute('disabled', '');
+  deleteBtn.classList.add('card__delete-btn_active')
+}
+
+//get all initial data
+Promise.all([getInitialCards(), getProfileData()])
+.then(([cards, profileData]) => {
+  insertProfileData(profileData);
+  userId = profileData._id;
+  const cardList = Array.from(cards).reverse();
+  cardList.forEach(card => {
+    prependCard(card)
+  })
+ })
+.catch(handleError)
+
+export function renderLoading(isLoading, btn) {
+  if(isLoading) {
+    btn.textContent = 'Сохранение...';
+    btn.setAttribute('disabled', '');
+    return;
+  }
+    btn.textContent = 'Сохранить';
+    btn.classList.add(validationData.disabledBtnClass);
+    btn.removeAttribute('disabled', '');
 }
 
 // start validation

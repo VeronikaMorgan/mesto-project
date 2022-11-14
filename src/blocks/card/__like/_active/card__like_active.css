@@ -1,3 +1,6 @@
+@import url(../../../animation/animation.css);
+
 .card__like_active {
   background-image: url('../../../../images/card-like-active.svg');
+  animation: like .4s linear;
 }

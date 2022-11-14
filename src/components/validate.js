@@ -5,7 +5,7 @@ export function enableValidation(formData) {
       e.preventDefault()
       resetErrors(form, formData);
       const submitBtn = form.querySelector(formData.submitBtnSelector);
-      toogleBtnState(form, submitBtn, formData);
+      // toogleBtnState(form, submitBtn, formData);
   })
     setFormValidityHandler(form, formData);
   });

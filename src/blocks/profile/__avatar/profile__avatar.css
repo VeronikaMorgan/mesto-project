@@ -1,14 +1,7 @@
 .profile__avatar {
-  max-width: 127px;
-  height: auto;
+  width: 127px;
+  height: 127px;
   border-radius: 50%;
-  object-fit: contain;
-  margin-right: 25px;
-}
-
-@media screen and (max-width: 800px) {
-  .profile__avatar {
-    margin-right: 0;
-    margin-bottom: 22px;
-  }
+  object-fit: cover;
+  object-position: center;
 }

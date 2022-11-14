@@ -1,0 +1,5 @@
+@import url('../../animation/animation.css');
+
+.card_deleted {
+  animation: fading .2s forwards ease;
+}
