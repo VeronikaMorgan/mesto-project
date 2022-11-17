@@ -73,19 +73,19 @@ avatarEditForm.addEventListener('submit', editAvatar)
 
 function editProfile(evt) {
   evt.preventDefault();
-  const btn = evt.target.querySelector('.modal__submit-btn');
+  const btn = evt.submitter;
   renderLoading(true, btn)
     updateProfileData(nameInput.value, jobInput.value)
     .then(newData => {
       userName.textContent = newData.name;
       userJob.textContent = newData.about;
+      evt.target.reset();
+      closeModal(editProfileModal)
     })
     .catch(handleError)
     .finally(() => {
       renderLoading(false, btn);
-      evt.target.reset();
   })
-  closeModal(editProfileModal)
 };
 
 // info synch for profile data
@@ -96,19 +96,18 @@ function editFormDefault() {
 
 function editAvatar(evt) {
   evt.preventDefault();
-  const btn = evt.target.querySelector('.modal__submit-btn');
+  const btn = evt.submitter;
   renderLoading(true, btn)
   updateProfileAvatar(avatarInputLink.value)
   .then(newData => {
-    console.log(newData)
     avatarImg.src = newData.avatar;
+    evt.target.reset();
+    closeModal(avatarModal);
   })
   .catch(handleError)
   .finally(() => {
     renderLoading(false, btn)
-    evt.target.reset();
   })
-  closeModal(avatarModal);
 }
 
 export function insertProfileData(obj) {
@@ -117,21 +116,14 @@ export function insertProfileData(obj) {
   avatarImg.src = obj.avatar;
 }
 
-export function showDeleteBtn (myCard) {
-  const deleteBtn = myCard.querySelector('.card__delete-btn');
-  deleteBtn.removeAttribute('disabled', '');
-  deleteBtn.classList.add('card__delete-btn_active')
-}
-
 //get all initial data
 Promise.all([getInitialCards(), getProfileData()])
 .then(([cards, profileData]) => {
   insertProfileData(profileData);
   userId = profileData._id;
   const cardList = Array.from(cards).reverse();
-  cardList.forEach(card => {
-    prependCard(card)
-  })
+  console.log(cardList)
+  cardList.forEach(prependCard)
  })
 .catch(handleError)
 
@@ -142,7 +134,6 @@ export function renderLoading(isLoading, btn) {
     return;
   }
     btn.textContent = 'Сохранить';
-    btn.classList.add(validationData.disabledBtnClass);
     btn.removeAttribute('disabled', '');
 }
 

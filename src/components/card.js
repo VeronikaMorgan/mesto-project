@@ -9,9 +9,9 @@ export function createCard(newCard) {
   const cardLike = card.querySelector('.card__like');
   const allLikes = newCard.likes;
   const likesCounter = card.querySelector('.card__like-counter');
-  
+  const cardCover = card.querySelector('.card__cover');
   card.querySelector('.card__title').textContent = newCard.name;
-  card.querySelector('.card__cover').src = newCard.link;
+  cardCover.src = newCard.link;
   card.querySelector('.card__cover').alt = newCard.name;
   
   card.id = newCard._id;
@@ -41,7 +41,7 @@ export function createCard(newCard) {
   })
 
   deleteCard(card, btnDelete);
-  openCardPopup(newCard.name, newCard.link, card);
+  openCardPopup(newCard.name, newCard.link, cardCover);
   return card
 }
 
@@ -50,8 +50,8 @@ export function prependCard(newCard) {
   cardList.prepend(card);
 }
 
-function openCardPopup(name, link, card) {
-  card.querySelector('.card__cover').addEventListener('click', () => {
+function openCardPopup(name, link, cover) {
+  cover.addEventListener('click', () => {
   imageCaption.textContent = name;
   imageLink.src = link;
   imageLink.alt = name;
@@ -61,29 +61,34 @@ function openCardPopup(name, link, card) {
 
 export function addNewCard(evt) {
   evt.preventDefault();
-  const btn = evt.target.querySelector('.modal__submit-btn');
+  const btn = evt.submitter;
   renderLoading(true, btn)
   postNewCard(cardNameInput.value, cardLinkInput.value)
     .then(newCard => {
       prependCard(newCard);
+      evt.target.reset();
+      closeModal(addCardModal);
     })
-    .catch(handleError)
+    .catch(() => {
+     handleError();
+     evt.submitter.classList.add(validationData.disabledBtnClass);
+    })
     .finally(() => {
       renderLoading(false, btn)
-      evt.target.reset();
-    })
-  closeModal(addCardModal);
+  })
 }
 
 function deleteCard(card, btn) {
   btn.addEventListener('click', () => {
-    deleteApiCard(card.id);
-
-    // card animation
-    card.classList.add('card_animated')
-    setTimeout(() => {
+    deleteApiCard(card.id)
+    .then(() => {
+      // card.classList.add('card_animated');
       card.closest('.card').remove();
-    }, 2000)
+      // setTimeout(() => {
+      //   card.closest('.card').remove();
+      // }, 2000)
+    })
+    .catch(handleError)
 })
 }
 

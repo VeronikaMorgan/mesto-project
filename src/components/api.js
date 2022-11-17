@@ -53,8 +53,7 @@ export function getProfileData() {
   return fetch(`${config.baseUrl}/users/me`, {
     headers: config.headers,
   })
-  .then(handleBasicResponse, console.log('nncxcn'))
-  .then(console.log('nnn'))
+  .then(handleBasicResponse)
 }
 
 export function updateProfileAvatar(src) {
@@ -74,7 +73,6 @@ export function deleteApiCard(id) {
     headers: config.headers,
   })
   .then(handleBasicResponse)
-  .catch(handleError)
 }
 
 export function setLike(id) {

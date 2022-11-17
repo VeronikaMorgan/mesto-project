@@ -8,7 +8,6 @@ export function handleEscPressed (evt) {
 }
 
 export function handleOverlayClick(evt) {
-  // const currentModal = document.querySelector('.modal_opened');
   if(!evt.target.closest('.modal__container')) {
     closeModal(evt.target);
   }

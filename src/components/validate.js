@@ -3,9 +3,7 @@ export function enableValidation(formData) {
   forms.forEach((form) => {
     form.addEventListener('submit', (e) => {
       e.preventDefault()
-      resetErrors(form, formData);
-      const submitBtn = form.querySelector(formData.submitBtnSelector);
-      // toogleBtnState(form, submitBtn, formData);
+      // const submitBtn = form.querySelector(formData.submitBtnSelector);
   })
     setFormValidityHandler(form, formData);
   });
@@ -14,12 +12,18 @@ export function enableValidation(formData) {
 function setFormValidityHandler(currentForm, formData) {
   const submitBtn = currentForm.querySelector(formData.submitBtnSelector);
   //  to make btn disabled before validation
-  toogleBtnState(currentForm, submitBtn, formData);
+  toggleBtnState(currentForm, submitBtn, formData);
+  
+  currentForm.addEventListener('reset', () => {
+    setTimeout(() => {
+      toggleBtnState(currentForm, submitBtn, formData)
+    }, 0);
+  });
   //   set validity handler on every input evt
   currentForm.addEventListener('input', (evt) => {
   const currentInput = evt.target;
   validate(currentInput, currentForm, formData);
-  toogleBtnState(currentForm, submitBtn, formData);
+  toggleBtnState(currentForm, submitBtn, formData);
  });
 }
 
@@ -63,7 +67,7 @@ function hasInvalidInput(currentForm, formData) {
   }) 
 }
 
-function toogleBtnState(currentForm, btn, formData) {
+function toggleBtnState(currentForm, btn, formData) {
   if (hasInvalidInput(currentForm, formData)) {
     btn.classList.add(formData.disabledBtnClass);
     btn.setAttribute('disabled', '');
