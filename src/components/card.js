@@ -12,7 +12,7 @@ export function createCard(newCard) {
   const cardCover = card.querySelector('.card__cover');
   card.querySelector('.card__title').textContent = newCard.name;
   cardCover.src = newCard.link;
-  card.querySelector('.card__cover').alt = newCard.name;
+  cardCover.alt = newCard.name;
   
   card.id = newCard._id;
   const cardId = card.id;
@@ -71,7 +71,6 @@ export function addNewCard(evt) {
     })
     .catch(() => {
      handleError();
-     evt.submitter.classList.add(validationData.disabledBtnClass);
     })
     .finally(() => {
       renderLoading(false, btn)
